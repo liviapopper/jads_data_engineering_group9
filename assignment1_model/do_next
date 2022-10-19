@@ -1,0 +1,54 @@
+1. create a VM (as u did yours)
+
+2. install docker on it
+cd DE2022\installation_script
+sh docker.sh
+sudo docker pull postgres:14.5
+sudo docker run --name my-postgres-server -e POSTGRES_PASSWORD=mysecretpassword -d postgres:14.5
+
+3. create network on docker
+sudo docker network create mynetwork
+sudo docker network connect mynetwork prediction-ui
+sudo docker network connect mynetwork prediction-api
+sudo docker network rm mynetwork
+
+4. creating and configuring docker file
+sudo docker build -t dockerhubname/predictionui:0.0.1 .
+sudo docker run -p 5001:5000 -e PREDICTOR_API=http://prediction-api:5000/iris_predictor dockerhubname/predictionui:0.0.1
+
+5. Deploy and Run Prediction-UI Component
+sudo docker build -t indika/prediction-api:0.0.1 .
+sudo docker run -p  5000:5000 -d --name=prediction-api indika/prediction-api:0.0.1
+sudo docker start prediction-api
+sudo docker logs prediction-api
+
+6. connect containers
+sudo docker network create diabetes-app-network
+sudo docker network connect diabetes-app-network prediction-api
+sudo docker network connect diabetes-app-network prediction-ui
+
+7. training API
+sudo docker build -t indika/training-api:0.0.1 .
+sudo docker run -p  5002:5000 -v /home/indika_kuma/models:/usr/src/myapp/models -d --name=training-api indika/training-api:0.0.1
+sudo docker start training-api
+sudo docker logs training-api
+
+8. create firewalls [adjust to ur needs]
+gcloud compute firewall-rules create flask-port-3 --allow tcp:5002
+
+9. run API
+sudo docker run -p  5000:5000 -v /home/indika_kuma/models:/usr/src/myapp/models -d --name=prediction-api
+indika/prediction-api:0.0.1
+
+10. rebuild images
+sudo docker build -t indikakumara/predictionapi:0.0.1 .
+sudo docker build -t indikakumara/predictionui:0.0.1 .
+sudo docker login
+sudo docker push indikakumara/predictionapi:0.0.1
+sudo docker push indikakumara/predictionui:0.0.1
+
+11. use a cloud build pipeline to build and push our three Docker components
+connect github repository (step by step with module lab3:
+                Lab3-DE2022-CI-CD Pipelines with Google Cloud Build.pptx)
+
+12. to deploy vertex AI see slides for lab4
