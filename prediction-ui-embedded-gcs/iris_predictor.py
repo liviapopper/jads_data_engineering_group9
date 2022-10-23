@@ -16,10 +16,8 @@ class IrisPredictor:
         self.model = None
 
     def predict_single_record(self, df):
-        model_name = os.environ.get('MODEL_NAME', 'Specified environment variable is not set.')
         if self.model is None:
-#            self.model = pickle.load(open(model_name, 'rb')) #extra add to read the model
-            self.model = load_model(model_name)
+            self.model = load_model('model.h5')
 
         y_pred = self.model.predict(df)
         print(y_pred[0])
