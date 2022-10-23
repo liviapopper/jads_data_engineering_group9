@@ -1,12 +1,8 @@
 [
   {
-    "ntp": 1,
-    "pgc": 126,
-    "dbp": 60,
-    "tsft": 0,
-    "si": 0,
-    "bmi": 30.1,
-    "dpf": 0.349,
-    "age": 47
+    "Sepal.Length": 1,
+    "Sepal.Width": 1,
+    "Petal.Length": 3,
+    "Petal.Width": 3
   }
 ]

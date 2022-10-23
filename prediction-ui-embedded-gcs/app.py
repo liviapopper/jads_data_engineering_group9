@@ -5,7 +5,7 @@ import os
 import pandas as pd
 from flask import Flask, request, render_template, jsonify
 
-from diabetes_predictor import DiabetesPredictor
+from iris_predictor import IrisPredictor
 
 # Flask constructor
 app = Flask(__name__)
@@ -13,23 +13,19 @@ app = Flask(__name__)
 
 # A decorator used to tell the application
 # which URL is associated function
-@app.route('/checkdiabetes', methods=["GET", "POST"])
-def check_diabetes():
+@app.route('/checkiris', methods=["GET", "POST"])
+def check_iris():
     if request.method == "POST":
         prediction_input = [
             {
-                "ntp": int(request.form.get("ntp")),  # getting input with name = ntp in HTML form
-                "pgc": int(request.form.get("pgc")),  # getting input with name = pgc in HTML form
-                "dbp": int(request.form.get("dbp")),
-                "tsft": int(request.form.get("tsft")),
-                "si": int(request.form.get("si")),
-                "bmi": float(request.form.get("bmi")),
-                "dpf": float(request.form.get("dpf")),
-                "age": int(request.form.get("age"))
+                "Sepal.Length": float(request.form.get("Sepal.Length")),  # getting input in HTML form
+                "Sepal.Width": float(request.form.get("Sepal.Width")),
+                "Petal.Length": float(request.form.get("Petal.Length")),
+                "Petal.Width": float(request.form.get("Petal.Width"))
             }
         ]
         print(prediction_input)
-        dp = DiabetesPredictor()
+        dp = IrisPredictor()
         df = pd.read_json(json.dumps(prediction_input), orient='records')
         status = dp.predict_single_record(df)
         # return the prediction outcome as a json message. 200 is HTTP status code 200, indicating successful completion
