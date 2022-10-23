@@ -3,6 +3,12 @@ import json
 import pandas as pd
 from keras.models import load_model
 import os
+import numpy as np
+
+from tensorflow.keras.layers import Input, Dense, Dropout, Activation
+from tensorflow.keras.models import Model
+
+
 #import pickle #extra add to read the model
 
 class IrisPredictor:
@@ -19,3 +25,4 @@ class IrisPredictor:
         print(y_pred[0])
         status = (y_pred[0])
         return status
+
