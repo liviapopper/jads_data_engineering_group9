@@ -10,12 +10,10 @@ class IrisPredictor:
         self.model = None
 
 
-
     def predict_single_record(self, df):
         if self.model is None:
-#            self.model = load_model('model.h5')
-        with open('model.h5', 'rb') as open_file:
-            model = pickle.load(open_file)
+            with open('model.h5', 'rb') as open_file:
+                model = pickle.load(open_file)
 
         y_pred = self.model.predict(df)
         print(y_pred[0])
