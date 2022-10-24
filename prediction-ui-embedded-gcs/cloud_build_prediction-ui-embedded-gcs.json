@@ -39,7 +39,7 @@
        "args": [
         "run",
         "deploy",
-        "prediction-service",
+        "prediction-service-gcs",
         "--image",
         "gcr.io/$PROJECT_ID/prediction-ui-embedded-gcs:0.0.1",
         "--region",
