@@ -6,4 +6,4 @@ numpy
 h5py
 six
 pytest
-pickle
+pickle5
