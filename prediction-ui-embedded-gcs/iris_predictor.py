@@ -14,6 +14,7 @@ class IrisPredictor:
         if self.model is None:
             with open('model.h5', 'rb') as open_file:
                 self.model = pickle.load(open_file)
+                
         y_pred = self.model.predict(df)
         print(y_pred[0])
         status = (y_pred[0])
