@@ -5,7 +5,8 @@ WORKDIR /usr/src/myapp
 # Copy requirements.txt  to the working directory
 COPY requirements_prod.txt .
 # Install tensorflow
-RUN pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.0.0-py3-none-any.whl
+RUN pip install --upgrade pip
+RUN pip install tensorflow==2.1.0
 # Install required python packages
 RUN pip install --no-cache-dir -r requirements_prod.txt
 # Copy all files in prediction-api local host directory to /usr/src/myapp in Docker container
