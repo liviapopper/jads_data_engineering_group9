@@ -1,4 +1,10 @@
-# jads_data_engineering_group9
+# Data Engineering - Group 9
 
-Data Engineering Assignment 1
-#hello 
+### Assignment 1
+
+Authors:
+* Andrea Cermaria
+* Diana Spahieva
+* Livia Popper
+* Olga Stańczyk
+* Pedro Grillo Brandão
