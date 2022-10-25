@@ -4,8 +4,9 @@
        "name": "gcr.io/cloud-builders/gsutil",
        "args": [
            "cp",
-		   "gs://model_repo_iris_lp/model.h5",
-           "./prediction-ui-embedded-gcs"
+           "gs://model_repo_iris_lp/model.h5",
+           "./prediction-ui-embedded-gcs",
+           "./backend"
         ]
     },
     {
