@@ -1,9 +1,10 @@
-keras
-tensorflow
 flask
 pandas
+keras
+tensorflow
 numpy
 h5py
 six
 pytest
-scikit-learn
+pickle5
+sklearn
