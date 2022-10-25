@@ -6,3 +6,5 @@ numpy
 h5py
 six
 pytest
+pickle5
+sklearn

@@ -4,18 +4,9 @@
        "name": "gcr.io/cloud-builders/gsutil",
        "args": [
            "cp",
-		   "gs://model_repo_de2022_iris_ph/model.h5",
+		       "gs://model_repo_iris_lp/model.h5",
            "./prediction-ui-embedded-gcs"
         ]
-    },
-    {
-      "name": "python",
-      "entrypoint": "/bin/sh",
-      "args": [
-        "-c",
-        "cd ./prediction-ui-embedded-gcs && python -m venv .myenv && . .myenv/bin/activate && pip install -r requirements_dev.txt && python -m pytest --junitxml=${SHORT_SHA}_test_log.xml",
-        "--user"
-      ]
     },
     {
       "name": "gcr.io/cloud-builders/docker",

@@ -1,7 +1,8 @@
-flask
-pandas
 keras
 tensorflow
+flask
+pandas
 numpy
 h5py
 six
+scikit-learn
